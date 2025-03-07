@@ -25,32 +25,28 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          # Removing the cache option which is causing problems
       
-      - name: Debug - List Files
+      - name: Find package.json
+        id: find-package
         run: |
-          ls -la
-          find . -name "package.json" | xargs dirname
+          PROJECT_DIR=$(find . -name "package.json" | xargs dirname | head -n 1)
+          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+          echo "Found package.json in $PROJECT_DIR"
       
       - name: Install dependencies
         run: |
-          cd $(find . -name "package.json" | xargs dirname | head -n 1)
+          cd ${{ env.PROJECT_DIR }}
           npm install
       
       - name: Build
         run: |
-          cd $(find . -name "package.json" | xargs dirname | head -n 1)
+          cd ${{ env.PROJECT_DIR }}
           npm run build
       
-      - name: List build directory
-        run: |
-          cd $(find . -name "package.json" | xargs dirname | head -n 1)
-          ls -la dist || echo "No dist directory found"
-      
-          - name: Upload artifact
-          uses: actions/upload-pages-artifact@v2
-          with:
-            path: ${{ env.PROJECT_DIR }}/dist
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ env.PROJECT_DIR }}/dist
 
   deploy:
     environment:
