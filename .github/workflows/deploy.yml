@@ -47,10 +47,10 @@ jobs:
           cd $(find . -name "package.json" | xargs dirname | head -n 1)
           ls -la dist || echo "No dist directory found"
       
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './$(find . -name "package.json" | xargs dirname | head -n 1)/dist'
+          - name: Upload artifact
+          uses: actions/upload-pages-artifact@v2
+          with:
+            path: ${{ env.PROJECT_DIR }}/dist
 
   deploy:
     environment:
