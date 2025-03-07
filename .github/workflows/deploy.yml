@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: '18'
           cache: 'npm'
+          cache-dependency-path: './safety-framework/package-lock.json'
       - name: Install dependencies
         run: npm ci
       - name: Build
@@ -37,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './safety-framework/dist' 
 
   deploy:
     environment:
