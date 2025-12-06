@@ -2,84 +2,171 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <script type="module" src="/src/main.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safety Framework</title>
-  <meta name="description" content="A methord of determaning a devices safety">
-  
-
+  <title>Safety Levels</title>
+  <meta name="description" content="A classification framework for device safety design">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <header class="text-white py-4" id="header">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col">
-          <h1>Safety Framework</h1>
-          <p class="lead mb-0">A universal framework for physical device saftey</p>
+<body class="bg-white text-zinc-900 font-sans antialiased">
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-6 py-10 md:py-16">
+    <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+
+      <!-- Left Column - Header & Intro (sticky on desktop) -->
+      <aside class="lg:col-span-4 mb-10 lg:mb-0">
+        <div class="lg:sticky lg:top-10">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Safety Levels</h1>
+          <p class="text-base text-zinc-500 mb-6">A framework for reasoning about device safety design.</p>
+          <p class="text-sm text-zinc-600 leading-relaxed mb-4">
+            How safe is a device, really? And how much does it depend on the person using it? This framework builds on the <a href="https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html" target="_blank" class="text-zinc-900 font-medium underline hover:text-zinc-600">Hierarchy of Controls</a> to give a clear answer. Think of it like <a href="https://www.iec.ch/ip-ratings" target="_blank" class="text-zinc-900 font-medium underline hover:text-zinc-600">IP ratings</a> for safety: a simple number that tells you what you're dealing with.
+          </p>
+          <p class="text-sm text-zinc-600 leading-relaxed">
+            Take the Petzl GriGri, a belay device with a cam that pinches the rope when a climber falls. Many assume it will lock automatically, but <a href="https://www.youtube.com/watch?v=WBGkKqLhM8Y" target="_blank" class="text-zinc-900 font-medium underline hover:text-zinc-600">catastrophic failures</a> occur when operators believe its safety level is higher than it is.
+          </p>
         </div>
-      </div>
+      </aside>
+
+      <!-- Right Column - Level Cards -->
+      <main class="lg:col-span-8 space-y-4">
+
+        <!-- Level 0 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-red-600">0</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">No Protection</h2>
+              <p class="text-sm text-zinc-600">Hazard fully exposed; no protective features or guidance.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">A vintage bench grinder with no wheel guards, no eye shields, and no spark arrestors. The spinning abrasive wheel is fully exposed during operation.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- Level 1 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-orange-600">1</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">Safe Only With Correct Use</h2>
+              <p class="text-sm text-zinc-600">Safety relies entirely on user skill, procedures and PPE. The device provides no engineering controls to help the operator.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">A basic chainsaw where safety depends almost entirely on operator technique, stance, and PPE (chaps, helmet, gloves). The device itself offers little protection; training and discipline are the primary safeguards.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- Level 2 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-amber-600">2</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">Safety Encouraged</h2>
+              <p class="text-sm text-zinc-600">The device provides cues, markings or warnings to encourage correct behaviour, but does not block unsafe use.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">An extension ladder with angle indicators, "this side up" labels, and anti-slip feet. These cues guide correct setup, but nothing prevents the operator from ignoring them or climbing unsafely.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- Level 3 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-emerald-600">3</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">Safety Assisted</h2>
+              <p class="text-sm text-zinc-600">Built-in design features reduce risk automatically under normal conditions, but incorrect technique or accidental misuse can still result in harm.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">A power drill with electronic brake, torque limiter, and insulated casing. These features reduce injury risk during normal use, but the operator can still defeat them through misuse or incorrect technique.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- Level 4 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-teal-600">4</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">Fail-Safe</h2>
+              <p class="text-sm text-zinc-600">The system forces a safe state that cannot be defeated by operator behaviour. No amount of incorrect technique, inattention, or misuse can override the protection during normal operation.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">A microwave oven with redundant door interlocks. The magnetron physically cannot energise unless all switches confirm the door is sealed; opening the door instantly cuts power. The operator cannot choose to run the microwave with the door open. The interlock makes operator misuse impossible under normal conditions.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+        <!-- Level 5 -->
+        <article class="rounded-lg border border-zinc-200 bg-zinc-50/50 p-4">
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center">
+              <span class="text-lg font-bold text-sky-600">5</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h2 class="text-base font-semibold text-zinc-900 mb-1">Inherently Safe</h2>
+              <p class="text-sm text-zinc-600">The hazardous energy or condition is designed out or substituted so that normal use cannot realistically create serious harm.</p>
+              <details class="mt-3 group">
+                <summary class="text-xs uppercase tracking-wider text-zinc-400 font-medium cursor-pointer hover:text-zinc-600 select-none inline-flex items-center gap-1">
+                  <svg class="w-3 h-3 transition-transform group-open:rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                  Example
+                </summary>
+                <p class="text-zinc-500 text-sm mt-2 mb-1 bg-white ring-1 ring-zinc-900/5 rounded p-3">Substituting a rotary paper trimmer with a safety blade that retracts into a guard after each cut, or replacing a solvent-based process with a water-based alternative. The hazard itself is eliminated or reduced to a level where serious harm is not realistically possible under normal use.</p>
+              </details>
+            </div>
+          </div>
+        </article>
+
+      </main>
     </div>
-  </header>
+  </div>
 
-  <main class="container py-5">
-    <div class="row">
-      <div class="col-md-3">
-
-        <nav class="sticky-top pt-3">
-          <ul class="nav flex-column">
-            <li class="nav-item"><a href="#intro" class="nav-link">Introduction</a></li>
-            <li class="nav-item"><a href="#Level-0" class="nav-link">0. Level Zero</a></li>
-            <li class="nav-item"><a href="#Level-1" class="nav-link">I. Level One</a></li>
-            <li class="nav-item"><a href="#Level-2" class="nav-link">II. Level Two</a></li>
-            <li class="nav-item"><a href="#Level-3" class="nav-link">III. Level Three</a></li>
-            <li class="nav-item"><a href="#Level-4" class="nav-link">IV. Level Four</a></li>
-
-          </ul>
-        </nav>
-      </div>
-      
-      <div class="col-md-9">
-
-        <section id="intro" class="mb-5">
-          <h2>Introduction</h2>
-          <p>This safety framework was conceived by <a href="https://pingfu.net/">Marc Barry</a> and refined with the help of <a href="https://jakestocker.com/">Jake Stocker</a> and <a href="#">Shuyu Zheng</a>, after observing the failure of a climbing belay device (GriGri) due to human error. This framework can be used to guide discussions around safety.</p>
-        </section>
-        
-        <section id="Level-0" class="mb-5">
-          <h2>I. Level Zero - No saftey</h2>
-          <p>Description of the first Level in your safety framework.</p>
-        </section>
-        
-        <section id="Level-1" class="mb-5">
-          <h2>II. Level One - Safe with correct use</h2>
-          <p>Description of the second Level in your safety framework.</p>
-        </section>
-        
-        <section id="Level-2" class="mb-5">
-          <h2>III. Level Two - Saftey activly encouraged</h2>
-          <p>Description of the third Level in your safety framework.</p>
-        </section>
-
-        <section id="Level-3" class="mb-5">
-          <h2>III. Level Three - Fail safe locked</h2>
-          <p>The operation of the device is impossible without passing a safety threshold. An example of this would be a microwave. The microwave will not begin operation until the door is closed. The door being closed is the safety threshold for any operations to occur.</p>
-        </section>
-
-        <section id="Level-4" class="mb-5">
-          <h2>III. Level Four</h2>
-          <p>Description of the third Level in your safety framework.</p>
-        </section>
-      </div>
-    </div>
-  </main>
-
-  <footer class="bg-light py-4">
-    <div class="container">
-      <p class="text-center mb-0">© 2025 Safety Framework. This content is licensed under <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
-      <p class="text-center mb-0">  <strong>Disclaimer:</strong> This safety framework was created by individuals who are not certified safety experts or professionally qualified in safety management. The content is provided for educational and discussion purposes only. Use of this framework and any advice contained herein is entirely at your own risk. Always consult qualified professionals and follow established industry safety standards for critical safety decisions.</p>
-    </div>
-  </footer>
-
-  <script type="module" src="/src/main.js"></script>
 </body>
 </html>
