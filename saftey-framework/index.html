@@ -3,8 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Safety Levels</title>
-  <meta name="description" content="A classification framework for device safety design">
+  <title>Safety Level Framework</title>
+  <meta name="description" content="A framework for classifying how effectively safety has been designed into a device. Rate devices from 0 (no protection) to 5 (inherently safe).">
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://safety-framework.fawltea.net/">
+  <meta property="og:title" content="Safety Level Framework">
+  <meta property="og:description" content="A framework for classifying how effectively safety has been designed into a device. Like IP ratings, but for safety.">
+  <meta property="og:image" content="https://safety-framework.fawltea.net/og-image.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://safety-framework.fawltea.net/">
+  <meta name="twitter:title" content="Safety Level Framework">
+  <meta name="twitter:description" content="A framework for classifying how effectively safety has been designed into a device. Like IP ratings, but for safety.">
+  <meta name="twitter:image" content="https://safety-framework.fawltea.net/og-image.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -30,6 +48,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Print styles -->
+  <style>
+    @media print {
+      body { background: white !important; color: black !important; }
+      .dark\:bg-zinc-900 { background: white !important; }
+      button, footer { display: none !important; }
+      details { display: block !important; }
+      details[open] summary { display: none !important; }
+      details > ul { display: block !important; margin-top: 0.5rem !important; }
+      article { break-inside: avoid; border-color: #ccc !important; }
+      a { color: inherit !important; text-decoration: none !important; }
+      .lg\:sticky { position: static !important; }
+    }
+  </style>
 </head>
 <body class="bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 font-sans antialiased">
 
@@ -39,14 +72,17 @@
 
       <!-- Left Column - Header & Intro (sticky on desktop) -->
       <aside class="lg:col-span-4 mb-10 lg:mb-0">
-        <div class="lg:sticky lg:top-10">
-          <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Safety Levels</h1>
+        <div class="lg:sticky lg:top-10 max-w-md lg:max-w-none">
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tight mb-4">Safety Level Framework</h1>
           <p class="text-base text-zinc-500 mb-6">A framework for classifying how effectively safety has been designed into a device.</p>
           <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
             How safe is a device, really? And how much does it depend on the person using it? This framework builds on the <a href="https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html" target="_blank" class="text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300">Hierarchy of Controls</a> to give a clear answer. Think of it like <a href="https://www.iec.ch/ip-ratings" target="_blank" class="text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300">IP ratings</a> for safety: a simple number that tells you what you're dealing with.
           </p>
-          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
             Take the Petzl GriGri, a belay device with a cam that pinches the rope when a climber falls. Many assume it will lock automatically, but <a href="https://www.youtube.com/watch?v=WBGkKqLhM8Y" target="_blank" class="text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300">catastrophic failures</a> can occur when operators believe its safety level is higher than it is.
+          </p>
+          <p class="text-xs text-zinc-500 dark:text-zinc-500 leading-relaxed mt-8">
+            <span class="font-medium">How to use:</span> Rate the device based on its primary hazard under normal operating conditions. Focus on what the device does to protect the operator, not edge cases or deliberate tampering.
           </p>
           <button onclick="toggleDarkMode()" class="mt-6 text-zinc-400 hover:text-zinc-600 dark:text-zinc-500 dark:hover:text-zinc-300" aria-label="Toggle dark mode">
             <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
@@ -68,11 +104,11 @@
         </div>
 
         <!-- Level 0 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-0" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center">
+            <a href="#level-0" class="flex-shrink-0 w-10 h-10 rounded-full bg-red-100 dark:bg-red-900/50 flex items-center justify-center hover:ring-2 hover:ring-red-300 dark:hover:ring-red-700 transition-shadow">
               <span class="text-lg font-bold text-red-600 dark:text-red-400">0</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">No Protection</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The device offers no protective features or guidance. The hazard is fully exposed.</p>
@@ -88,11 +124,11 @@
         </article>
 
         <!-- Level 1 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-1" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center">
+            <a href="#level-1" class="flex-shrink-0 w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/50 flex items-center justify-center hover:ring-2 hover:ring-orange-300 dark:hover:ring-orange-700 transition-shadow">
               <span class="text-lg font-bold text-orange-600 dark:text-orange-400">1</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Safe Only With Correct Use</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The device provides no engineering controls to help the operator. Safety relies entirely on user skill, procedures and PPE.</p>
@@ -108,11 +144,11 @@
         </article>
 
         <!-- Level 2 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-2" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center">
+            <a href="#level-2" class="flex-shrink-0 w-10 h-10 rounded-full bg-amber-100 dark:bg-amber-900/50 flex items-center justify-center hover:ring-2 hover:ring-amber-300 dark:hover:ring-amber-700 transition-shadow">
               <span class="text-lg font-bold text-amber-600 dark:text-amber-400">2</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Safety Encouraged</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The device provides cues, markings or warnings to encourage correct behaviour, but does not block unsafe use.</p>
@@ -128,11 +164,11 @@
         </article>
 
         <!-- Level 3 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-3" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center">
+            <a href="#level-3" class="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/50 flex items-center justify-center hover:ring-2 hover:ring-emerald-300 dark:hover:ring-emerald-700 transition-shadow">
               <span class="text-lg font-bold text-emerald-600 dark:text-emerald-400">3</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Safety Assisted</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The device has built-in features that reduce risk automatically, but incorrect technique or accidental misuse can still result in harm.</p>
@@ -148,11 +184,11 @@
         </article>
 
         <!-- Level 4 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-4" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center">
+            <a href="#level-4" class="flex-shrink-0 w-10 h-10 rounded-full bg-teal-100 dark:bg-teal-900/50 flex items-center justify-center hover:ring-2 hover:ring-teal-300 dark:hover:ring-teal-700 transition-shadow">
               <span class="text-lg font-bold text-teal-600 dark:text-teal-400">4</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Fail-Safe</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The device forces a safe state that cannot be overridden by the operator. No amount of incorrect technique, inattention, or misuse can bypass the protection during normal operation.</p>
@@ -168,11 +204,11 @@
         </article>
 
         <!-- Level 5 -->
-        <article class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5">
+        <article id="level-5" class="rounded-lg border border-zinc-200 dark:border-zinc-700 bg-zinc-50/50 dark:bg-zinc-800/50 p-5 scroll-mt-4">
           <div class="flex items-start gap-4">
-            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center">
+            <a href="#level-5" class="flex-shrink-0 w-10 h-10 rounded-full bg-sky-100 dark:bg-sky-900/50 flex items-center justify-center hover:ring-2 hover:ring-sky-300 dark:hover:ring-sky-700 transition-shadow">
               <span class="text-lg font-bold text-sky-600 dark:text-sky-400">5</span>
-            </div>
+            </a>
             <div class="flex-1 min-w-0">
               <h2 class="text-base font-semibold text-zinc-900 dark:text-zinc-100 mb-2">Inherently Safe</h2>
               <p class="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">The danger is designed out entirely. The device simply cannot cause serious harm through normal use.</p>
@@ -189,6 +225,54 @@
 
       </main>
     </div>
+
+    <!-- Quick Reference Table -->
+    <section class="mt-12 lg:mt-16">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-4">Quick Reference</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm border border-zinc-200 dark:border-zinc-700 rounded-lg overflow-hidden">
+          <thead class="bg-zinc-100 dark:bg-zinc-800">
+            <tr>
+              <th class="px-3 py-2 text-left font-medium text-zinc-700 dark:text-zinc-300">Level</th>
+              <th class="px-3 py-2 text-left font-medium text-zinc-700 dark:text-zinc-300">Name</th>
+              <th class="px-3 py-2 text-left font-medium text-zinc-700 dark:text-zinc-300">What the device provides</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-200 dark:divide-zinc-700">
+            <tr class="bg-white dark:bg-zinc-900">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 text-xs font-bold">0</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">No Protection</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">No protection. Hazard fully exposed.</td>
+            </tr>
+            <tr class="bg-zinc-50 dark:bg-zinc-800/50">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 text-xs font-bold">1</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">Safe Only With Correct Use</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">No engineering controls. Safety depends on the operator.</td>
+            </tr>
+            <tr class="bg-white dark:bg-zinc-900">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 text-xs font-bold">2</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">Safety Encouraged</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">Cues and warnings, but no enforcement.</td>
+            </tr>
+            <tr class="bg-zinc-50 dark:bg-zinc-800/50">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 text-xs font-bold">3</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">Safety Assisted</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">Automatic protection, but incorrect technique or misuse can still cause harm.</td>
+            </tr>
+            <tr class="bg-white dark:bg-zinc-900">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-600 dark:text-teal-400 text-xs font-bold">4</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">Fail-Safe</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">Enforced safe state. Cannot be overridden by operator.</td>
+            </tr>
+            <tr class="bg-zinc-50 dark:bg-zinc-800/50">
+              <td class="px-3 py-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/50 text-sky-600 dark:text-sky-400 text-xs font-bold">5</span></td>
+              <td class="px-3 py-2 text-zinc-900 dark:text-zinc-100 whitespace-nowrap">Inherently Safe</td>
+              <td class="px-3 py-2 text-zinc-600 dark:text-zinc-400">Hazard designed out. Cannot cause serious harm.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </div>
 
   <footer class="mt-16 border-t border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-800">
