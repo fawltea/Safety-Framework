@@ -4,27 +4,61 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A static website documenting a physical device safety framework with 5 levels (0-4). Built with Vite and Bootstrap, deployed to GitHub Pages.
+A static website documenting a physical device safety framework with 6 levels (0-5). Built with Vite and Tailwind CSS (CDN), deployed to GitHub Pages. Supports multiple languages (English, Chinese, Japanese).
 
-## Development Commands
+## Development
 
-All commands run from the `saftey-framework/` directory:
+Run from the repository root using Docker:
 
-```bash
-cd saftey-framework
-npm install     # Install dependencies
-npm run dev     # Start dev server
-npm run build   # Build for production
-npm run preview # Preview production build
+```powershell
+.\run.ps1    # Build and start dev server at http://localhost:5173
+```
+
+To stop:
+```powershell
+docker rm -f safety-framework-dev
 ```
 
 ## Architecture
 
 - **Build tool**: Vite with vanilla JS (no framework)
-- **Styling**: Bootstrap 5.3 + custom CSS variables in `src/style.css`
-- **Entry point**: `index.html` loads `src/main.js`
-- **Deployment**: GitHub Actions workflow (`.github/workflows/deploy.yml`) auto-deploys to GitHub Pages on push to main
+- **Styling**: Tailwind CSS via CDN (no local install)
+- **Internationalisation**: Build-time generation from JSON locale files
 
-## Project Structure Note
+## Project Structure
 
-The Vite project lives in `saftey-framework/` subdirectory (note the intentional spelling).
+```
+saftey-framework/           # Note: intentional spelling
+├── src/
+│   ├── template.html       # Main HTML template with {{placeholders}}
+│   ├── build-i18n.js       # Generates localised pages at build time
+│   ├── main.js             # Entry point (minimal)
+│   └── style.css           # Custom styles
+├── locales/
+│   ├── en.json             # English translations
+│   ├── zh.json             # Chinese (Simplified) translations
+│   └── ja.json             # Japanese translations
+├── index.html              # Root redirect (detects browser language)
+├── en/                     # Generated (gitignored)
+├── zh/                     # Generated (gitignored)
+├── ja/                     # Generated (gitignored)
+└── vite.config.js          # Vite config with i18n hot-reload plugin
+```
+
+## Adding a New Language
+
+1. Create `locales/{code}.json` based on `locales/en.json`
+2. Add language code to `languages` array in `src/build-i18n.js`
+3. Add `<option>` to language dropdown in `src/template.html`
+4. Add `<link rel="alternate" hreflang="{code}">` in `src/template.html`
+5. Add input entry in `vite.config.js`
+6. Add redirect case in root `index.html`
+7. Add to `.gitignore`
+
+## Key Design Decisions
+
+- British English spelling throughout (behaviour, colour, etc.)
+- No brand names in examples (use generic descriptions)
+- Device-centric language ("The device..." not "The process...")
+- Dark mode support with localStorage persistence
+- Examples auto-expand when navigating via anchor links (#level-3)
