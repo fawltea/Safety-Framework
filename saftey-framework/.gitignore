@@ -13,6 +13,7 @@ dist-ssr
 *.local
 
 # Generated i18n pages
+/index.html
 /zh/
 /ja/
 
