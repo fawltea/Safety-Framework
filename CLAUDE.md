@@ -19,11 +19,29 @@ To stop:
 docker rm -f safety-framework-dev
 ```
 
+**Important**: Never run `npm`, `node`, or other tooling locally. Always use Docker.
+
 ## Architecture
 
 - **Build tool**: Vite with vanilla JS (no framework)
 - **Styling**: Tailwind CSS via CDN (no local install)
 - **Internationalisation**: Build-time generation from JSON locale files
+
+## Testing the Build
+
+To manually run the i18n build script inside the Docker container:
+
+```powershell
+docker exec safety-framework-dev node src/build-i18n.js
+```
+
+To verify generated output:
+
+```powershell
+docker exec safety-framework-dev cat index.html | head -30      # Check English (root)
+docker exec safety-framework-dev cat zh/index.html | head -30   # Check Chinese
+docker exec safety-framework-dev cat ja/index.html | head -30   # Check Japanese
+```
 
 ## Project Structure
 
@@ -35,11 +53,10 @@ saftey-framework/           # Note: intentional spelling
 │   ├── main.js             # Entry point (minimal)
 │   └── style.css           # Custom styles
 ├── locales/
-│   ├── en.json             # English translations
+│   ├── en.json             # English translations (levels array with examples)
 │   ├── zh.json             # Chinese (Simplified) translations
 │   └── ja.json             # Japanese translations
-├── index.html              # Root redirect (detects browser language)
-├── en/                     # Generated (gitignored)
+├── index.html              # English content (generated, root)
 ├── zh/                     # Generated (gitignored)
 ├── ja/                     # Generated (gitignored)
 └── vite.config.js          # Vite config with i18n hot-reload plugin
@@ -48,12 +65,13 @@ saftey-framework/           # Note: intentional spelling
 ## Adding a New Language
 
 1. Create `locales/{code}.json` based on `locales/en.json`
-2. Add language code to `languages` array in `src/build-i18n.js`
+2. Add language entry to `languages` array in `src/build-i18n.js` (e.g. `{ code: 'fr', outputPath: 'fr' }`)
 3. Add `<option>` to language dropdown in `src/template.html`
 4. Add `<link rel="alternate" hreflang="{code}">` in `src/template.html`
-5. Add input entry in `vite.config.js`
-6. Add redirect case in root `index.html`
-7. Add to `.gitignore`
+5. Add input entry in `vite.config.js` build rollupOptions
+6. Add `/{code}/` to `.gitignore`
+
+Note: English is served at root (`/`), all other languages at `/{code}/`.
 
 ## Key Design Decisions
 
