@@ -1,9 +1,9 @@
 {
   "lang": "zh",
-  "title": "安全框架",
-  "meta_description": "一个用于评估设备安全设计有效性的框架。从0级（无保护）到5级（本质安全）对设备进行分级。",
-  "og_description": "一个用于评估设备安全设计有效性的框架。类似于IP防护等级，但针对的是用户安全。",
-  "subtitle": "一个用于评估设备安全设计有效性的框架。",
+  "title": "安全设计指数",
+  "meta_description": "一个用于评估设备安全设计有效性的指数。从0级（无保护）到5级（本质安全）对设备进行分级。",
+  "og_description": "一个用于评估设备安全设计有效性的指数。类似于IP防护等级，但针对的是用户安全。",
+  "subtitle": "一种用于讨论设备安全并推动更安全设计开发的通用语言。",
   "intro_p1": "一个设备到底有多安全？又有多少取决于使用者？本框架基于<a href=\"https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">控制层级</a>理论，给出明确答案。可以把它理解为<a href=\"https://www.iec.ch/ip-ratings\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">IP防护等级</a>，但评估的是设备对用户的保护程度。",
   "intro_p2": "以Petzl GriGri为例，这是一款设计为在攀登者坠落时自动锁住绳索的攀岩器械。许多人以为它会自动锁定，但当操作者高估设备的安全等级时，<a href=\"https://www.youtube.com/watch?v=WBGkKqLhM8Y\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">灾难性事故</a>仍可能发生。",
   "how_to_use_label": "使用方法：",

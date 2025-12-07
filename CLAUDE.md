@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A static website documenting a physical device safety framework with 6 levels (0-5). Built with Vite and Tailwind CSS (CDN), deployed to GitHub Pages. Supports multiple languages (English, Chinese, Japanese).
+A static website documenting the Safety Design Index, a classification system for device safety with 6 levels (0-5). Built with Vite and Tailwind CSS (CDN), deployed to GitHub Pages. Supports multiple languages (English, Chinese, Japanese).
 
 ## Development
 

@@ -1,9 +1,9 @@
 {
   "lang": "en",
-  "title": "Safety Framework",
-  "meta_description": "A framework for classifying how effectively safety has been designed into a device. Rate devices from 0 (no protection) to 5 (inherently safe).",
-  "og_description": "A framework for classifying how effectively safety has been designed into a device. Like IP ratings, but for safety.",
-  "subtitle": "A framework for classifying how effectively safety has been designed into a device.",
+  "title": "Safety by Design Index",
+  "meta_description": "An index for classifying how effectively safety has been designed into a device. Rate devices from 0 (no protection) to 5 (inherently safe).",
+  "og_description": "An index for classifying how effectively safety has been designed into a device. Like IP ratings, but for safety.",
+  "subtitle": "A common language for discussing device safety and encouraging safer-by-design development.",
   "intro_p1": "How safe is a device, really? And how much does it depend on the person using it? This framework builds on the <a href=\"https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">Hierarchy of Controls</a> to give a clear answer. Think of it like <a href=\"https://www.iec.ch/ip-ratings\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">IP ratings</a>, but for how well a device protects its users.",
   "intro_p2": "Take the Petzl GriGri, a climbing device designed to grip the rope automatically when a climber falls. Many assume it will lock automatically, but <a href=\"https://www.youtube.com/watch?v=WBGkKqLhM8Y\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">catastrophic failures</a> can occur when operators overestimate a device's safety level.",
   "how_to_use_label": "How to use:",
