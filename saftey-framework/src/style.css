@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .pill {
+    @apply inline-flex items-center px-1 py-0.5 rounded font-medium text-xs no-underline;
+  }
+  .pill-emerald {
+    @apply bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-200 dark:hover:bg-emerald-800;
+  }
+  .pill-orange {
+    @apply bg-orange-100 dark:bg-orange-900/50 text-orange-600 dark:text-orange-400 hover:bg-orange-200 dark:hover:bg-orange-800;
+  }
+  .pill-amber {
+    @apply bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400 hover:bg-amber-200 dark:hover:bg-amber-800;
+  }
+}

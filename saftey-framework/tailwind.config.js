@@ -3,6 +3,7 @@ export default {
   content: [
     './index.html',
     './src/**/*.{html,js}',
+    './locales/**/*.json',
     './en/**/*.html',
     './zh/**/*.html',
     './ja/**/*.html',
