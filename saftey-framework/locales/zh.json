@@ -6,8 +6,6 @@
   "subtitle": "一种用于讨论设备安全并推动更安全设计开发的通用语言。",
   "intro_p1": "一个设备到底有多安全？又有多少取决于使用者？本框架基于<a href=\"https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">控制层级</a>理论，给出明确答案。可以把它理解为<a href=\"https://www.iec.ch/ip-ratings\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">IP防护等级</a>，但评估的是设备对用户的保护程度。",
   "intro_p2": "以Petzl GriGri为例，这是一款设计为在攀登者坠落时自动锁住绳索的攀岩器械。许多人以为它会自动锁定，但当操作者高估设备的安全等级时，<a href=\"https://www.youtube.com/watch?v=WBGkKqLhM8Y\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">灾难性事故</a>仍可能发生。",
-  "how_to_use_label": "使用方法：",
-  "how_to_use": "根据设备在正常操作条件下的主要危害进行评级。关注设备本身提供的保护措施，而非极端情况或故意破坏。",
   "scale_least": "效果最低",
   "scale_most": "效果最高",
   "examples_label": "示例",
@@ -78,5 +76,6 @@
   "table_header_level": "等级",
   "table_header_name": "名称",
   "table_header_description": "设备提供的保护",
-  "footer": "本框架开源，采用<a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">知识共享署名4.0</a>许可证。欢迎通过<a href=\"https://github.com/fawltea/Safety-Framework\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">GitHub</a>贡献。"
+  "footer_disclaimer": "此指数旨在仅衡量设计安全性，不代表实际使用中的整体安全性，后者取决于设备本身以外的因素。",
+  "footer_copyright": "© 2025 · <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">CC BY 4.0</a> · 欢迎通过 <a href=\"https://github.com/fawltea/Safety-Framework\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">GitHub</a> 贡献"
 }

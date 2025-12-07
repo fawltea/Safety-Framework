@@ -6,8 +6,6 @@
   "subtitle": "A common language for discussing device safety and encouraging safer-by-design development.",
   "intro_p1": "How safe is a device, really? And how much does it depend on the person using it? This framework builds on the <a href=\"https://www.cdc.gov/niosh/hierarchy-of-controls/about/index.html\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">Hierarchy of Controls</a> to give a clear answer. Think of it like <a href=\"https://www.iec.ch/ip-ratings\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">IP ratings</a>, but for how well a device protects its users.",
   "intro_p2": "Take the Petzl GriGri, a climbing device designed to grip the rope automatically when a climber falls. Many assume it will lock automatically, but <a href=\"https://www.youtube.com/watch?v=WBGkKqLhM8Y\" target=\"_blank\" class=\"text-zinc-900 dark:text-zinc-100 font-medium underline hover:text-zinc-600 dark:hover:text-zinc-300\">catastrophic failures</a> can occur when operators overestimate a device's safety level.",
-  "how_to_use_label": "How to use:",
-  "how_to_use": "Rate the device based on its primary hazard under normal operating conditions. Focus on what the device does to protect the operator, not edge cases or deliberate tampering.",
   "scale_least": "Least effective",
   "scale_most": "Most effective",
   "examples_label": "Examples",
@@ -78,5 +76,6 @@
   "table_header_level": "Level",
   "table_header_name": "Name",
   "table_header_description": "What the device provides",
-  "footer": "This framework is open source and licensed under <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">Creative Commons Attribution 4.0</a>. Contributions welcome via <a href=\"https://github.com/fawltea/Safety-Framework\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">GitHub</a>."
+  "footer_disclaimer": "This index is intended to measure safety by design only. It does not represent overall real-world safety, which depends on factors outside the device itself.",
+  "footer_copyright": "© 2025 · <a href=\"https://creativecommons.org/licenses/by/4.0/\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">CC BY 4.0</a> · Contributions welcome via <a href=\"https://github.com/fawltea/Safety-Framework\" target=\"_blank\" class=\"text-zinc-700 dark:text-zinc-300 underline hover:text-zinc-900 dark:hover:text-zinc-100\">GitHub</a>"
 }

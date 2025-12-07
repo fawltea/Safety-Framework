@@ -10,11 +10,19 @@ const __dirname = dirname(__filename)
 function i18nPlugin() {
   return {
     name: 'i18n-rebuild',
-    handleHotUpdate({ file }) {
-      if (file.includes('/src/template.html') || file.includes('/locales/')) {
+    configureServer(server) {
+      const rebuildI18n = () => {
         console.log('\n🌐 Rebuilding i18n...')
         execSync('node src/build-i18n.js', { stdio: 'inherit' })
+        server.ws.send({ type: 'full-reload' })
       }
+      server.watcher.add(['src/template.html', 'locales'])
+      server.watcher.on('change', (file) => {
+        const normalised = file.replace(/\\/g, '/')
+        if (normalised.includes('src/template.html') || normalised.includes('locales/')) {
+          rebuildI18n()
+        }
+      })
     }
   }
 }
@@ -22,6 +30,12 @@ function i18nPlugin() {
 export default defineConfig({
   base: '/',
   plugins: [i18nPlugin()],
+  server: {
+    watch: {
+      usePolling: true,
+      interval: 1000,
+    },
+  },
   build: {
     rollupOptions: {
       input: {
