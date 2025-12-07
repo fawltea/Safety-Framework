@@ -50,8 +50,7 @@ saftey-framework/           # Note: intentional spelling
 ├── src/
 │   ├── template.html       # Main HTML template with {{placeholders}}
 │   ├── build-i18n.js       # Generates localised pages at build time
-│   ├── main.js             # Entry point (minimal)
-│   └── style.css           # Custom styles
+│   └── main.js             # Entry point (minimal)
 ├── locales/
 │   ├── en.json             # English translations (levels array with examples)
 │   ├── zh.json             # Chinese (Simplified) translations
