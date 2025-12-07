@@ -24,7 +24,7 @@ docker rm -f safety-framework-dev
 ## Architecture
 
 - **Build tool**: Vite with vanilla JS (no framework)
-- **Styling**: Tailwind CSS via CDN (no local install)
+- **Styling**: Tailwind CSS (built at build time via PostCSS)
 - **Internationalisation**: Build-time generation from JSON locale files
 
 ## Testing the Build
@@ -50,14 +50,19 @@ saftey-framework/           # Note: intentional spelling
 ├── src/
 │   ├── template.html       # Main HTML template with {{placeholders}}
 │   ├── build-i18n.js       # Generates localised pages at build time
+│   ├── style.css           # Tailwind CSS source (directives only)
 │   └── main.js             # Entry point (minimal)
 ├── locales/
 │   ├── en.json             # English translations (levels array with examples)
 │   ├── zh.json             # Chinese (Simplified) translations
 │   └── ja.json             # Japanese translations
+├── public/
+│   └── style.css           # Generated CSS (gitignored)
 ├── index.html              # English content (generated, root)
 ├── zh/                     # Generated (gitignored)
 ├── ja/                     # Generated (gitignored)
+├── tailwind.config.js      # Tailwind configuration
+├── postcss.config.js       # PostCSS configuration
 └── vite.config.js          # Vite config with i18n hot-reload plugin
 ```
 

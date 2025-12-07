@@ -4,17 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "css": "npx tailwindcss -i ./src/style.css -o ./public/style.css --minify",
+    "css:watch": "npx tailwindcss -i ./src/style.css -o ./public/style.css --watch",
     "i18n": "node src/build-i18n.js",
-    "dev": "npm run i18n && vite",
-    "build": "npm run i18n && vite build",
+    "dev": "npm run i18n && npm run css && concurrently \"npm run css:watch\" \"vite --host\"",
+    "build": "npm run i18n && npm run css && vite build",
     "preview": "vite preview",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
     "gh-pages": "^6.3.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "vite": "^6.2.0"
-  },
-  "dependencies": {
-    "bootstrap": "^5.3.3"
   }
 }
